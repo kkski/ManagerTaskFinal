@@ -1,3 +1,5 @@
+package pl.coderslab;
+
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.*;
@@ -21,8 +23,8 @@ public class TaskManager {
         System.out.println(ConsoleColors.BLUE + "Select an option please");
         String[] options = {"add", "remove", "list", "exit"};
         System.out.print(ConsoleColors.RESET);
-        for (int i = 0; i < options.length; i++) {
-            System.out.println(options[i]);
+        for (String option : options) {
+            System.out.println(option);
         }
     }
 
@@ -68,8 +70,7 @@ public class TaskManager {
             Scanner scan = new Scanner(System.in);
             System.out.println("Tell me which task you want to remove.");
             int index = scan.nextInt() - 1;
-            String[] temp = ArrayUtils.remove(arr, index);
-            arr = temp;
+            arr = ArrayUtils.remove(arr, index);
             System.out.println("Option removed.");
             System.out.println();
             showOptions();
@@ -96,13 +97,13 @@ public class TaskManager {
             Scanner scan = new Scanner(System.in);
             System.out.println("Please add task description.");
             String description = scan.nextLine();
-            newEntry.append(description + ", ");
+            newEntry.append(description).append(", ");
             System.out.println("Please add task due date. rrrr-mm-dd");
             String date = scan.nextLine();
-            newEntry.append(date + ", ");
+            newEntry.append(date).append(", ");
             System.out.println("Is this task important? true/false");
             boolean important = scan.nextBoolean();
-            newEntry.append(String.valueOf(important));
+            newEntry.append(important);
             String newEntryStr = newEntry.toString();
             temp[temp.length - 1] = newEntryStr;
             arr = temp;
@@ -138,8 +139,8 @@ public class TaskManager {
             PrintWriter writer = new PrintWriter("src/tasks.csv");
             writer.print("");
             //Path csvpath = Paths.get("src/tasks.csv");
-            for (int i = 0; i < arr.length; i++) {
-                writer.println(arr[i]);
+            for (String s : arr) {
+                writer.println(s);
             }
             writer.close();
 

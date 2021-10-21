@@ -1,3 +1,5 @@
+package pl.coderslab;
+
 /**
  * https://stackoverflow.com/a/45444716
  */
